@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+
+    <!--链接数据库的基本信息-->
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="connection.url">jdbc:mysql://localhost:3306/spring</property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">root</property>
+
+    <!--数据采用的方言-->
+    <property name="dialect" >org.hibernate.dialect.MySQL5InnoDBDialect</property>
+   <!-- <property name="dialect" >org.hibernate.dialect.MySQL5Dialect</property>-->
+
+    <!--显示sql语句-->
+    <property name="show_sql">true</property>
+
+    <!--sql语句格式化-->
+    <property name="format_sql">true</property>
+
+    <property name="hbm2ddl.auto">update</property>
+
+    <!--validate 不会创建表，和自动更新列，只是做一个检查，如果不存在，那么就会抛出异常-->
+    <!--<property name="hbm2ddl.auto">validate</property>-->
+
+    <mapping resource="com/wxx/hibernate/session/News.hbm.xml"/>
+
+  </session-factory>
+
+</hibernate-configuration>

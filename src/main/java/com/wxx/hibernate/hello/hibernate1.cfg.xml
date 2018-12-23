@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+
+    <!--链接数据库的基本信息-->
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="connection.url">jdbc:mysql://localhost:3306/spring</property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">root</property>
+
+    <!--数据采用的方言-->
+    <property name="dialect" >org.hibernate.dialect.MySQL5InnoDBDialect</property>
+   <!-- <property name="dialect" >org.hibernate.dialect.MySQL5Dialect</property>-->
+
+    <!--显示sql语句-->
+    <property name="show_sql">true</property>
+
+    <!--sql语句格式化-->
+    <property name="format_sql">true</property>
+
+    <!--hibernate自动创建表的策略-->
+    <!--hbm2ddl.auto有四个取值-->
+    <!--create将原来的表删除,每次会创建一个新的-->
+    <!--<property name="hbm2ddl.auto">create</property>-->
+
+    <!--create-drop当sessionFactory关闭，那么就会删除原来的数据和表格-->
+    <!--<property name="hbm2ddl.auto">create-drop</property>-->
+
+    <!--update 先查看有没有对应的数据库表，如果有就用原来的，如果没有就创建，如果表结构不一样，也会进行更新-->
+    <property name="hbm2ddl.auto">update</property>
+
+    <!--validate 不会创建表，和自动更新列，只是做一个检查，如果不存在，那么就会抛出异常-->
+    <!--<property name="hbm2ddl.auto">validate</property>-->
+
+    <mapping resource="com/wxx/hibernate/hello/News.hbm.xml"/>
+
+  </session-factory>
+
+</hibernate-configuration>
