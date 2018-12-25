@@ -14,6 +14,8 @@ import javax.imageio.spi.ServiceRegistry;
 import java.sql.Date;
 
 /**
+ * hibernate状态转换测试
+ * 1.临时对象转换为持久对象 save(),pesist
  * Created by Administrator on 2018/12/22/022.
  */
 public class SessionTest {
@@ -46,6 +48,55 @@ public class SessionTest {
         session.save(new com.wxx.hibernate.session.News("java","java",new Date(System.currentTimeMillis())));
     }
 
+    /**
+     * 调用persist()方法进行状态转换:使一个临时对象转换为持久对象
+     * 和save()的区别：
+     * 1）在pesist之前设置id,不会执行insert语句，会直接抛出异常
+     */
+    @Test
+    public void persistTest(){
+        News news = new News("java", "java",  new Date(System.currentTimeMillis()));
+
+        //在pesist之前设置id,不会执行insert语句，会直接抛出异常
+        //news.setId(6);
+
+        System.out.println(news);
+
+        session.persist(news);
+
+        System.out.println(news);
+
+        //对持久化对象Id进行修改，这个是不允许的，会抛异常
+        //news.setId(5);
+
+        //System.out.println(news);
+    }
+
+    /**
+     * 调用save()方法进行状态转换:使一个临时对象转换为持久对象
+     *  1）为对象分配id
+     *  2)在flush缓存时，会执行insert语句
+     *  3)在save之前设置id,但是是无效，还是由数据库分配
+     *  4)持久化Id不能进行修改
+     */
+    @Test
+    public void saveTest(){
+        News news = new News("java", "java",  new Date(System.currentTimeMillis()));
+
+        //在save之前设置id,但是是无效，还是由数据库分配
+        //news.setId(4);
+
+        System.out.println(news);
+
+        session.save(news);
+
+        System.out.println(news);
+
+        //对持久化对象Id进行修改，这个是不允许的，会抛异常
+        //news.setId(5);
+
+        //System.out.println(news);
+    }
 
     @After
     public void after(){
