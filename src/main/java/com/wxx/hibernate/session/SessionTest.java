@@ -42,6 +42,28 @@ public class SessionTest {
 
     }
 
+    /**
+     * update方法测试
+     * 1).当session中的对象属性被改变时，session可以被感知，会在flush时会自动执行update方法
+     * 2)update方法可以将游离状态的对象转换为持久状态的对象
+     */
+    @Test
+    public void updateTest(){
+
+        News news=(News)session.get(News.class,1);
+        System.out.println(news);
+
+        //将对象转变为游离对象，关闭当前session
+        //transaction.commit();
+        //session.close();
+
+        //修改持久对象当中的值，从而执行update语句
+        //news.setAuth("sun");
+        //session.update(news);
+
+        System.out.println(news);
+    }
+
 
     @Test
     public void t(){
@@ -101,9 +123,9 @@ public class SessionTest {
     @After
     public void after(){
         //提交事务
-        transaction.commit();
+       // transaction.commit();
         //关闭一个session
-        session.close();
+        //session.close();
         //关闭sessionFactory
         sessionFactory.close();
     }
