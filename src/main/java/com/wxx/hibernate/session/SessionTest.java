@@ -42,6 +42,32 @@ public class SessionTest {
 
     }
 
+    /**
+     * load和get的区别
+     * 1）load会懒加载对象，需要使用的时候才发送sql语句，返回一个代理对象，get会立即加载对象发送sql语句
+     * 2）load在查询没有结果的时候会抛异常，get则返回null
+     * 3)load在调用完后马上关闭session会抛异常，get可以正常得到结果
+    */
+    @Test
+    public void loadTest(){
+        News news = (News)session.load(News.class, 1);
+
+        session.close();
+        System.out.println("是否发送sql语句");
+
+        System.out.println(news);
+    }
+
+    @Test
+    public void getTest(){
+        News news = (News)session.get(News.class, 1);
+
+        session.close();
+        System.out.println("是否发送sql语句");
+
+        System.out.println(news);
+    }
+
 
     @Test
     public void t(){
@@ -96,6 +122,23 @@ public class SessionTest {
         //news.setId(5);
 
         //System.out.println(news);
+    }
+
+    /**
+     * session缓存问题
+     * 1.session中会持有一个持久化对象的引用
+     *
+     */
+    @Test
+    public void sessionCache(){
+        /**
+         * 关于第一点，所以由于缓存问题，两次获取到的是同一个对象实例
+         */
+        News o =(News) session.get(News.class, 1);
+        System.out.println(o);
+
+        News o1 =(News) session.get(News.class, 1);
+        System.out.println(o1);
     }
 
     @After
