@@ -21,7 +21,7 @@
     <!--sql语句格式化-->
     <property name="format_sql">true</property>
 
-    <property name="hbm2ddl.auto">update</property>
+    <property name="hbm2ddl.auto">create</property>
 
     <!--validate 不会创建表，和自动更新列，只是做一个检查，如果不存在，那么就会抛出异常-->
     <!--<property name="hbm2ddl.auto">validate</property>-->

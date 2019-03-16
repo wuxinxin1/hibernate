@@ -11,7 +11,11 @@
             <generator class="native"/>
         </id>
 
-        <property name="title" type="java.lang.String">
+        <!--type指定实体类，某字段的类型;hibernate,sql,java之间有类型映射关系，可以查看映射表格
+            unique表示设置这个字段为唯一约束
+            length设置长度
+        -->
+        <property name="title" type="java.lang.String" unique="true" length="20">
             <column name="title"/>
         </property>
 
@@ -19,9 +23,24 @@
             <column name="auth"/>
         </property>
 
+        <!--时间格式为年月日时分秒-->
         <property name="date" type="java.util.Date">
             <column name="date"/>
         </property>
+
+        <!--时间格式为时分秒-->
+         <!--<property name="date" type="java.sql.Time">
+            <column name="date"/>
+        </property>-->
+
+        <!--格式是年月日-->
+        <!--<property name="date" type="java.sql.Date">
+            <column name="date"/>
+        </property>-->
+
+       <!-- <property name="date" type="java.sql.Timestamp">
+            <column name="date"/>
+        </property>-->
 
     </class>
 

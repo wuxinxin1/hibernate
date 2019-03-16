@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -45,6 +46,11 @@ public class ConfigTest {
      * hbm.xml配置问题
      * 1.hibernate-mapping的package属性是用来指定class的包名的，在class标签中可以省去包名（但一个News.hbm.xml文件定义多个class时，优势更明显）
      * 2.class 的dynamic-update="true" 用于动态生成update语句，没有修改的值，将不会出现在sql语句中
+     * 3.type指定实体类，某字段的类型;hibernate,sql,java之间有类型映射关系，可以查看映射表格
+     *  4.时间问题：
+     *    a.在java中表示时间的有两个类：java.util.Date和 java.util.calendar
+     *    b.在jdbc中支持了java.util.Date的扩展，即三个子类:java.sql.Date(年月日),java.sql.Time(时间),java.sql.TimeStamp
+     * 5.sql-type,用来精确影射
      */
     @Test
     public void test(){
