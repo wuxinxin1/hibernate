@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.wxx.hibernate.config">
+
+    <class name="News" table="news3" dynamic-update="true">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <generator class="native"/>
+        </id>
+
+        <property name="title" type="java.lang.String">
+            <column name="title"/>
+        </property>
+
+        <property name="auth" type="java.lang.String">
+            <column name="auth"/>
+        </property>
+
+        <property name="date" type="java.util.Date">
+            <column name="date"/>
+        </property>
+
+    </class>
+
+</hibernate-mapping>

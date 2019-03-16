@@ -13,6 +13,7 @@
 
     <!--数据采用的方言-->
     <property name="dialect" >org.hibernate.dialect.MySQL5InnoDBDialect</property>
+   <!-- <property name="dialect" >org.hibernate.dialect.MySQL5Dialect</property>-->
 
     <!--显示sql语句-->
     <property name="show_sql">true</property>
@@ -22,26 +23,10 @@
 
     <property name="hbm2ddl.auto">update</property>
 
-    <property name="connection.isolation">2</property>
+    <!--validate 不会创建表，和自动更新列，只是做一个检查，如果不存在，那么就会抛出异常-->
+    <!--<property name="hbm2ddl.auto">validate</property>-->
 
-    <!--删除对象后将id设置为null-->
-    <property name="use_identifier_rollback">true</property>
-
-    <!--配置c3p0-->
-      <!--每次向数据库获取几条连接对象，直到到Max数量-->
-    <property name="hibernate.c3p0.acquire_increment">2</property>
-      <!--隔多久检查一次超时的连接对象-->
-    <property name="c3p0.idle_test_period">2000</property>
-      <!--最少存在的连接对象数量-->
-    <property name="c3p0.min_size">5</property>
-      <!--最大存在的连接对象数量-->
-    <property name="c3p0.max_size">30</property>
-      <!--?????-->
-    <property name="c3p0.max_statements">5</property>
-      <!--连接对象多久不用就表示过期（超时）-->
-    <property name="c3p0.timeout">2000</property>
-
-    <mapping resource="com/wxx/hibernate/session/News.hbm.xml"/>
+    <mapping resource="com/wxx/hibernate/config/News.hbm.xml"/>
 
   </session-factory>
 
