@@ -20,7 +20,7 @@
     <!--sql语句格式化-->
     <property name="format_sql">true</property>
 
-    <property name="hbm2ddl.auto">update</property>
+    <property name="hbm2ddl.auto">create</property>
 
     <mapping resource="com/wxx/hibernate/config/News.hbm.xml"/>
 
