@@ -53,7 +53,7 @@ public class News {
         this.date = date;
     }
 
-   /* @Override
+    @Override
     public String toString() {
         return "News{" +
                 "id=" + id +
@@ -61,5 +61,5 @@ public class News {
                 ", auth='" + auth + '\'' +
                 ", date=" + date +
                 '}';
-    }*/
+    }
 }

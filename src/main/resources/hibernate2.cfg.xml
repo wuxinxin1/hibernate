@@ -22,6 +22,11 @@
 
     <property name="hbm2ddl.auto">update</property>
 
+    <property name="connection.isolation">2</property>
+
+    <!--删除对象后将id设置为null-->
+    <property name="use_identifier_rollback">true</property>
+
     <mapping resource="com/wxx/hibernate/session/News.hbm.xml"/>
 
   </session-factory>
