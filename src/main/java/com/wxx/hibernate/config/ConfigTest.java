@@ -70,6 +70,29 @@ public class ConfigTest {
         o.setAuth("aab");
     }
 
+    /**
+     * 1.添加一条记录
+     * 2.查询一条记录
+     */
+    @Test
+    public void testCompn(){
+        /*Worker worker=new Worker();
+
+        Pay pay=new Pay();
+        pay.setDayMoney(100);
+        pay.setMonthMoney(2200);
+        pay.setYearMoney(26400);
+
+        worker.setPay(pay);
+        worker.setName("wxx");
+
+        session.save(worker);*/
+
+        Worker o = (Worker)session.get(Worker.class, 2);
+
+        System.out.println(o);
+    }
+
     @After
     public void after(){
         //提交事务

@@ -44,4 +44,36 @@
 
     </class>
 
+    <!--测试配置组件方式-->
+    <class name="Worker" table="worker">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <generator class="native"/>
+        </id>
+
+        <property name="name" type="java.lang.String">
+            <column name="name"/>
+        </property>
+
+        <!--component用于配置内部组件-->
+        <component name="pay" class="Pay">
+
+            <!--指定当前组件所属的整体组件-->
+            <parent name="worker" />
+
+            <!--组件成员属性-->
+            <property name="dayMoney" type="java.lang.Integer">
+                <column name="dayMoney"/>
+            </property>
+
+            <property name="monthMoney" type="java.lang.Integer">
+                <column name="monthMoney"/>
+            </property>
+
+            <property name="yearMoney" type="java.lang.Integer">
+                <column name="yearMoney"/>
+            </property>
+        </component>
+    </class>
+
 </hibernate-mapping>

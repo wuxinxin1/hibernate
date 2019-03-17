@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--定义1的一端-->
+<hibernate-mapping package="com.wxx.hibernate.relation">
+
+    <class name="Customer" table="customs">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <generator class="native"/>
+        </id>
+
+        <property name="name" type="java.lang.String">
+            <column name="name"/>
+        </property>
+
+    </class>
+
+</hibernate-mapping>

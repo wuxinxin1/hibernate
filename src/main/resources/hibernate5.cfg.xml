@@ -22,7 +22,9 @@
 
     <property name="hbm2ddl.auto">update</property>
 
-    <mapping resource="com/wxx/hibernate/config/News.hbm.xml"/>
+    <!--配置一对多-->
+    <mapping resource="com/wxx/hibernate/relation/one2many/Customer.hbm.xml"/>
+    <mapping resource="com/wxx/hibernate/relation/one2many/Order.hbm.xml"/>
 
   </session-factory>
 

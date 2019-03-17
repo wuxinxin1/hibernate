@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--定义1的一端-->
+<hibernate-mapping package="com.wxx.hibernate.relation.one2many">
+
+    <class name="Customer" table="customs">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <generator class="native"/>
+        </id>
+
+        <property name="name" type="java.lang.String">
+            <column name="name"/>
+        </property>
+        
+        <!--配置多对一
+          table指明对应的多是哪张表
+          key指明匹配多的一方通过的外键
+          one-to-many指明使用哪个域对象来去映射这张表
+        -->
+        <set name="orders" table="orders">
+            <key column="customer_id"></key>
+            <one-to-many class="Order"/>
+        </set>
+
+    </class>
+
+</hibernate-mapping>

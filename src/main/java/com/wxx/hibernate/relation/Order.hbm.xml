@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--定义1的一端-->
+<hibernate-mapping package="com.wxx.hibernate.relation">
+
+    <class name="Order" table="orders">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <generator class="native"/>
+        </id>
+
+        <property name="name" type="java.lang.String">
+            <column name="name"/>
+        </property>
+
+        <!--定义多对一关系，即相当于在多的一端添加一个外键-->
+        <many-to-one name="customer" class="Customer" column="customer_id"/>
+    </class>
+
+</hibernate-mapping>
