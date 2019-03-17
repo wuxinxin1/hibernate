@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--定义1的一端-->
+<hibernate-mapping package="com.wxx.hibernate.relation.one2one2">
+
+    <class name="Manage" table="manage">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <generator class="native"/>
+        </id>
+
+        <property name="magName" type="java.lang.String">
+            <column name="magName"/>
+        </property>
+
+        <one-to-one name="department" class="Department" />
+    </class>
+
+</hibernate-mapping>

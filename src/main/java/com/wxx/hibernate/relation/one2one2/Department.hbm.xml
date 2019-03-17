@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--定义1的一端-->
+<hibernate-mapping package="com.wxx.hibernate.relation.one2one2">
+
+    <class name="Department" table="department">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <!--采用foreign的主键生成方式，即使用持久化manage这个类的主键-->
+            <generator class="foreign">
+                <param name="property">manage</param>
+            </generator>
+        </id>
+
+        <property name="depName" type="java.lang.String">
+            <column name="depName"/>
+        </property>
+
+        <!--constrained  为主键添加外键约束,外键约束就是可以约束主表的存在，另外就是根据外键检索主键数据-->
+        <one-to-one name="manage" class="Manage" constrained="true"/>
+        <!--one-to-one name="manage" class="Manage" />-->
+    </class>
+
+</hibernate-mapping>
