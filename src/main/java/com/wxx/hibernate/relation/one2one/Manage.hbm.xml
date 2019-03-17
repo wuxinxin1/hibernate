@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--定义1的一端-->
+<hibernate-mapping package="com.wxx.hibernate.relation.one2one">
+
+    <class name="Manage" table="manage">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <generator class="native"/>
+        </id>
+
+        <property name="magName" type="java.lang.String">
+            <column name="magName"/>
+        </property>
+
+        <!--
+           property-ref: 如果没有指定这个属性，在进行一对一映射的时候，将默认使用department表的主键（id）
+                         但是我们这里在进行一对一映射的时候使用的是manage.id==department.nanage_id
+        -->
+        <one-to-one name="department" class="Department" property-ref="manage"/>
+    </class>
+
+</hibernate-mapping>

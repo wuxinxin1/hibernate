@@ -16,7 +16,7 @@
             <column name="name"/>
         </property>
         
-        <!--配置多对一
+        <!--配置一对多
           table指明对应的多是哪张表
           key指明匹配多的一方通过的外键
           one-to-many指明使用哪个域对象来去映射这张表

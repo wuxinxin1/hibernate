@@ -16,7 +16,12 @@
             <column name="name"/>
         </property>
 
-        <!--定义多对一关系，即相当于在多的一端添加一个外键-->
+        <!--定义多对一关系，即相当于在多的一端添加一个外键
+           name:指定这个外键受哪张表约束
+           column:哪个表的哪个字段约束
+
+           其实many-to-one和component作用差不多，都是作为引用类型，many-to-one引用数据库表类，component引用普通类
+        -->
         <many-to-one name="customer" class="Customer" column="customer_id"/>
     </class>
 

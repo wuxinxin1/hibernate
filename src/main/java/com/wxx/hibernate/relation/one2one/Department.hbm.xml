@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--定义1的一端-->
+<hibernate-mapping package="com.wxx.hibernate.relation.one2one">
+
+    <class name="Department" table="department">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <generator class="native"/>
+        </id>
+
+        <property name="depName" type="java.lang.String">
+            <column name="depName"/>
+        </property>
+
+        <!--添加 many-to-one  相当于添加外键约束,添加一个外键字段
+          由于要实现一对一，所以这个外键还要添加唯一约束
+
+          默认创建的外键指向manage的主键，作为外键约束
+        -->
+        <many-to-one name="manage" class="Manage" unique="true">
+            <column name="manage_id"/>
+        </many-to-one>
+    </class>
+
+</hibernate-mapping>
