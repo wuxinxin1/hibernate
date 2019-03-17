@@ -20,8 +20,11 @@
           table指明对应的多是哪张表
           key指明匹配多的一方通过的外键
           one-to-many指明使用哪个域对象来去映射这张表
+          inverse:设置为true表示不维护关联关系，反转维护关系，由多的一方来维护关联关系
+          cascade:一些级联操作的设置，详细了解查阅文档
+          order-by:用来对获取到的多条数据进行排除的，后面接的的orderby的sql
         -->
-        <set name="orders" table="orders">
+        <set name="orders" table="orders" inverse="true" >
             <key column="customer_id"></key>
             <one-to-many class="Order"/>
         </set>
