@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--定义1的一端-->
+<hibernate-mapping package="com.wxx.hibernate.relation.many2many">
+
+    <class name="EmpPro" table="EmpPro">
+
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <generator class="native"/>
+        </id>
+
+        <!--设置多对多关系，通过两个多对一关系-->
+
+        <!--
+          many-to-one的作用(其实相当于proper标签，只不过有附件功能):
+          1.填充当前持久类字段
+          2.维护表之间的关系，通过添加外键约束
+
+          name:对应当前持久化字段的属性
+          class:对应one的一方的持久化类
+          column:对应当前持久化类，在数据中类型和名称
+        -->
+        <many-to-one name="empId" class="Emploee">
+            <column name="emp_id" />
+        </many-to-one>
+
+        <many-to-one name="proId" class="Project" >
+            <column name="pro_id" />
+        </many-to-one>
+
+    </class>
+
+</hibernate-mapping>

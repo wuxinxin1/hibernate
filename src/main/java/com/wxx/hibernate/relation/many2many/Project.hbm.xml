@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--定义1的一端-->
+<hibernate-mapping package="com.wxx.hibernate.relation.many2many">
+
+    <class name="Project" table="project">
+        <id name="proId" type="java.lang.Integer">
+            <column name="pro_id"></column>
+            <generator class="native"/>
+        </id>
+
+        <property name="proName" type="java.lang.String">
+            <column name="pro_name"/>
+        </property>
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--定义1的一端-->
+<hibernate-mapping package="com.wxx.hibernate.relation.many2many">
+
+    <class name="Emploee" table="emploee">
+        <id name="empId" type="java.lang.Integer">
+            <column name="emp_id"></column>
+            <generator class="native"/>
+        </id>
+
+        <property name="empName" type="java.lang.String">
+            <column name="emp_name"/>
+        </property>
+
+        <!--配置一对多-->
+        <set name="projects" table="project">
+            <key column="emp_id"></key>
+            <one-to-many class="EmpPro"/>
+        </set>
+
+    </class>
+
+</hibernate-mapping>
