@@ -25,7 +25,6 @@
     <!--配置一对多-->
     <mapping resource="com/wxx/hibernate/relation/many2many/Emploee.hbm.xml"/>
     <mapping resource="com/wxx/hibernate/relation/many2many/Project.hbm.xml"/>
-    <mapping resource="com/wxx/hibernate/relation/many2many/EmpPro.hbm.xml"/>
 
   </session-factory>
 

@@ -12,8 +12,6 @@ public class Project {
     private int proId;
     private String proName;
 
-    private Set<EmpPro> empPros;
-
     public int getProId() {
         return proId;
     }
@@ -30,11 +28,4 @@ public class Project {
         this.proName = proName;
     }
 
-    public Set<EmpPro> getEmpPros() {
-        return empPros;
-    }
-
-    public void setEmpPros(Set<EmpPro> empPros) {
-        this.empPros = empPros;
-    }
 }

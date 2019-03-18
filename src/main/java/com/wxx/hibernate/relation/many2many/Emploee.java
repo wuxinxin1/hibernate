@@ -1,5 +1,6 @@
 package com.wxx.hibernate.relation.many2many;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -12,7 +13,7 @@ public class Emploee {
     private int empId;
     private String empName;
 
-    private Set<Project> projects;
+    private Set<Project> projects=new HashSet<Project>();
 
     public int getEmpId() {
         return empId;

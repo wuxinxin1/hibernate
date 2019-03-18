@@ -14,6 +14,8 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.sun.xml.internal.ws.dump.LoggingDumpTube.Position.Before;
+
 /**
  * 测试多对多
  *
@@ -54,7 +56,7 @@ public class Many2ManyRelationTest {
 
     @Test
     public void selectTest(){
-        Emploee o = (Emploee)session.get(Emploee.class, 1);
+        Emploee o = (Emploee)session.get(Emploee.class, 2);
 
 
         Set<Project> projects = o.getProjects();
@@ -65,46 +67,27 @@ public class Many2ManyRelationTest {
     }
 
     @Test
-    public void saveProject(){
-        Project project = new Project();
-        project.setProName("mac");
-
-        session.save(project);
-
-    }
-
-    @Test
-    public void saveEmpPro(){
+    public void saveTest(){
         Emploee emploee = new Emploee();
-        emploee.setEmpId(1);
+        emploee.setEmpName("刘静");
 
         Project project = new Project();
-        project.setProId(1);
+        project.setProName("iphone");
 
-
-        EmpPro empPro = new EmpPro();
+        Project project1 = new Project();
+        project1.setProName("ipad");
 
         //设置关联关系
-        empPro.setEmpId(emploee);
-        empPro.setProId(project);
+        emploee.getProjects().add(project);
+        emploee.getProjects().add(project1);
 
-        session.save(empPro);
-    }
-
-    @Test
-    public void saveEmploee(){
-
-        /**
-         * 保存单一对象
-         */
-        Emploee emploee = new Emploee();
-
-        emploee.setEmpName("刘静");
+        //执行保存
+        session.save(project);
+        session.save(project1);
 
         session.save(emploee);
 
     }
-
 
     @After
     public void after(){
