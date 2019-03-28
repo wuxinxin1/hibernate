@@ -25,7 +25,7 @@
                         这个id就是用column来指定的，class表示这个pro_id对应哪个持久类（这里说的emp_id和pro_id都是emppro表中的字段）
         -->
         <set name="projects" table="emppro">
-            <!--用来指明用中间表的哪个字段来去和当前持久类表的id字段进行比对-->
+            <!--用来指明用中间表的哪个字段来去和当前持久类表的id字段进行比对，其实就是定义外键，并且约束与主表（当前持久表emploee）-->
             <key column="emp_id"></key>
             <!--通过key找到了所有满足的记录之后，用来指明用记录中的哪个字段去检索project持久化类的主键-->
             <many-to-many class="Project" column="pro_id"/>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--定义1的一端-->
+<hibernate-mapping package="com.wxx.hibernate.relation.subclassmap">
+
+    <!--
+      discriminator-value用来标明采用的辨别者值
+    -->
+    <class name="Person" table="person" discriminator-value="person">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <generator class="native"/>
+        </id>
+
+        <!--
+           由于父类和子类公用一张表，需要添加一列（辨别者列）来区分是父类记录还是子类记录
+        -->
+        <discriminator column="type" type="java.lang.String"/>
+
+
+        <property name="name" type="java.lang.String">
+            <column name="name"/>
+        </property>
+
+        <property name="age" type="java.lang.Integer" >
+            <column name="age"/>
+        </property>
+
+        <subclass name="Student" discriminator-value="student">
+            <property name="school">
+                <column name="school"/>
+            </property>
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>
